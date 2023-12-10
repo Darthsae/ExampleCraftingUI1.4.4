@@ -1,0 +1,3 @@
+displayName = Crafting Example
+author = Sockmit2007
+version = 0.1

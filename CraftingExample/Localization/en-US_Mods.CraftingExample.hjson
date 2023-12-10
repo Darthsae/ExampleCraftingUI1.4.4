@@ -1,0 +1,8 @@
+Keybinds.Crafting.DisplayName: Crafting
+
+Items: {
+	ExampleCrafter: {
+		DisplayName: Example Crafter
+		Tooltip: ""
+	}
+}

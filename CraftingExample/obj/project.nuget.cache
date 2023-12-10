@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hCVztrYBg8Wtrx/7tZWBbSPTfjyVow8/1nlB7sXeCECzSlwXYk0XWTGSYtYLoiB91AkGNypkbSKLc0c2bW7ynQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sockm\\OneDrive\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\CraftingExample\\CraftingExample.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sockm\\.nuget\\packages\\tmodloader.codeassist\\0.1.5\\tmodloader.codeassist.0.1.5.nupkg.sha512"
+  ],
+  "logs": []
+}
