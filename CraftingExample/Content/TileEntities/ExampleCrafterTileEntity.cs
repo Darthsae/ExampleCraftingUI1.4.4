@@ -1,4 +1,3 @@
-﻿using CraftingExample.Content.Tiles;
 using System.IO;
 using Terraria;
 using Terraria.ID;
