@@ -8,9 +8,12 @@
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+    <AdditionalFiles Remove="Content\NewFolder\**" />
+    <Compile Remove="Content\NewFolder\**" />
+    <EmbeddedResource Remove="Content\NewFolder\**" />
+    <None Remove="Content\NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\NewFolder\" />
+    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
 </Project>

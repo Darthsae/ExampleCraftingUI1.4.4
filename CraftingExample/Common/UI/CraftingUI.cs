@@ -11,15 +11,19 @@ using Terraria.ID;
 
 namespace CraftingExample.Common.UI
 {
-    // This custom UI will show whenever the player is holding the ExampleCustomResourceWeapon item and will display the player's custom resource amounts that are tracked in ExampleResourcePlayer
     internal class CraftingUIState : UIState
     {
-        // For this bar we'll be using a frame texture and then a gradient inside bar, as it's one of the more simpler approaches while still looking decent.
-        // Once this is all set up make sure to go and do the required stuff for most UI's in the ModSystem class.
+        //Area for the element:
         private UIElement area;
+
+        //The background image:
         private UIImage background;
+
+        //The item slots:
         private VanillaItemSlotWrapper slotOne;
         private VanillaItemSlotWrapper slotTwo;
+
+        //Craft button and close button:
         private UIButton<string> button;
         private UIButton<string> close;
 
@@ -73,8 +77,8 @@ namespace CraftingExample.Common.UI
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            // This prevents drawing unless we are using an ExampleCustomResourceWeapon
-            if (!Main.LocalPlayer.GetModPlayer<CraftingPlayer>().crafting()) return;
+            // This prevents drawing unless we are crafting
+            if (!Main.LocalPlayer.GetModPlayer<CraftingPlayer>().IsCrafting()) return;
 
             base.Draw(spriteBatch);
         }
@@ -86,8 +90,18 @@ namespace CraftingExample.Common.UI
 
         public override void Update(GameTime gameTime)
         {
-            if (Main.LocalPlayer.TryGetModPlayer(out CraftingPlayer modPlayer) && !modPlayer.crafting())
+            if (Main.LocalPlayer.TryGetModPlayer(out CraftingPlayer modPlayer) && !modPlayer.IsCrafting())
+            {
+                if (modPlayer.craftingTileEntity != null)
+                {
+                    modPlayer.craftingTileEntity.items[0] = slotOne.Item;
+                    modPlayer.craftingTileEntity.items[1] = slotTwo.Item;
+                    modPlayer.crafting_ui = false;
+                    modPlayer.craftingTileEntity = null;
+                }
                 return;
+            }
+                
 
             if (modPlayer.quick_update)
             {
@@ -97,8 +111,6 @@ namespace CraftingExample.Common.UI
             }
             else if (modPlayer.quick_save)
             {
-                modPlayer.craftingTileEntity.items[0] = slotOne.Item;
-                modPlayer.craftingTileEntity.items[1] = slotTwo.Item;
                 modPlayer.quick_save = false;
                 modPlayer.crafting_ui = false;
             }
@@ -108,7 +120,7 @@ namespace CraftingExample.Common.UI
 
         public override void LeftClick(UIMouseEvent evt)
         {
-            if (Main.LocalPlayer.TryGetModPlayer(out CraftingPlayer modPlayer) && (!modPlayer.crafting()))
+            if (Main.LocalPlayer.TryGetModPlayer(out CraftingPlayer modPlayer) && (!modPlayer.IsCrafting()))
                 return;
 
             if (button.IsMouseHovering)
@@ -138,10 +150,7 @@ namespace CraftingExample.Common.UI
             }
             else if (close.IsMouseHovering)
             {
-                modPlayer.craftingTileEntity.items[0] = slotOne.Item;
-                modPlayer.craftingTileEntity.items[1] = slotTwo.Item;
                 modPlayer.crafting_ui = false;
-                modPlayer.craftingTileEntity = null;
             }
         }
     }
@@ -172,7 +181,7 @@ namespace CraftingExample.Common.UI
             if (resourceBarIndex != -1)
             {
                 layers.Insert(resourceBarIndex, new LegacyGameInterfaceLayer(
-                    "HardToLessHard: Crafting",
+                    "Crafting Example: Crafting",
                     delegate {
                         CraftingUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
