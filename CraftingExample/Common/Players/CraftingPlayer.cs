@@ -16,6 +16,8 @@ namespace CraftingExample.Common.Players
         public bool quick_save = false;
         public bool crafting_ui = false;
         public ExampleCrafterTileEntity craftingTileEntity = null;
+        public int MusicDisk = -1;
+        public bool Jukebox = false;
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

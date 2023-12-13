@@ -14,6 +14,16 @@
     <None Remove="Content\NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Content\Items\ExampleJukebox.png" />
+    <None Remove="Content\Items\ExampleNoteblock.png" />
+    <None Remove="Content\Items\MusicDisk1.png" />
+    <None Remove="Content\Tiles\ExampleJukebox.png" />
+    <None Remove="Content\Tiles\ExampleNoteblock.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Music\" />
   </ItemGroup>
 </Project>

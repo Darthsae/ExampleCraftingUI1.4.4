@@ -5,4 +5,19 @@ Items: {
 		DisplayName: Example Crafter
 		Tooltip: ""
 	}
+
+	ExampleJukebox: {
+		DisplayName: Example Jukebox
+		Tooltip: ""
+	}
+
+	ExampleNoteblock: {
+		DisplayName: Example Noteblock
+		Tooltip: ""
+	}
+
+	MusicDisk1: {
+		DisplayName: Music Disk1
+		Tooltip: ""
+	}
 }
